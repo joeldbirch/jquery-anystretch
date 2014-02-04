@@ -13,12 +13,14 @@
  *
  * This is a fork of jQuery Backstretch (v1.2)
  * Copyright (c) 2011 Scott Robbin (srobbin.com)
+
+ * Patched to work with 1.9+ by Joel Birch based on @miketierney's (github) patch
 */
 
 ;(function($) {
     
     $.fn.anystretch = function(src, options, callback) {
-        var isBody = this.selector.length ? false : true; // Decide whether anystretch is being called on an element or not
+        var isBody = typeof this.context === undefined; // Decide whether anystretch is being called on an element or not https://github.com/miketierney/jquery-anystretch/commit/4cdb36697a27a6c0f17daf1122c512adce95b1a3
 
         return this.each(function(i){
             var defaultSettings = {
